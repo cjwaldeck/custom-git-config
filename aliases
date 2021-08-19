@@ -1,0 +1,14 @@
+[alias]
+	; Clean all untracked files in the repo and any submodules
+	clean-full = !git clean -xdff -e .vscode && git submodule foreach --recursive \"git clean -xdff -e .vscode\"
+
+	; Hard reset of repo including any submodules
+	reset-full = !git reset --hard && git submodule foreach --recursive \"git reset --hard\"
+
+	; Fetch and hard reset to tracking remote branch including any submodules
+	reset-remote-full = !git fetch && git reset --hard @{u} && git submodule update --recursive --init -f
+
+	; List all my branches, newest first. Given that I start my branches with "cw".
+	my-branches = for-each-ref --sort=committerdate \
+	--format='%1b[32m%(refname:short)%1b[0m%0a %(contents:subject)%0a  %(committerdate:relative) (%(committerdate:short))' \
+	'refs/remotes/origin/cw*' 'refs/heads/cw*'
