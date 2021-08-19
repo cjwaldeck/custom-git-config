@@ -1,5 +1,5 @@
 [alias]
-	; Clean all untracked files in the repo and any submodules
+	; Clean all untracked files in the repo and any submodules. Don't remove any .vscode files.
 	clean-full = !git clean -xdff -e .vscode && git submodule foreach --recursive \"git clean -xdff -e .vscode\"
 
 	; Hard reset of repo including any submodules
