@@ -8,6 +8,9 @@
 	; Fetch and hard reset to tracking remote branch including any submodules
 	reset-remote-full = !git fetch && git reset --hard @{u} && git submodule update --recursive --init -f
 
+	; Combine clean-full and reset-full to make it silly clean
+	silly-clean = !git clean-full && git reset-full
+
 	; List all my branches, newest first. Given that I start my branches with "cw".
 	my-branches = for-each-ref --sort=committerdate \
 	--format='%1b[32m%(refname:short)%1b[0m%0a %(contents:subject)%0a  %(committerdate:relative) (%(committerdate:short))' \
