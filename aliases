@@ -1,4 +1,7 @@
 [alias]
+	; Switch to a new branch
+	nb = !git switch -c
+
 	; Clean all untracked files in the repo and any submodules. Don't remove any .vscode files.
 	clean-full = !git clean -xdff -e .vscode && git submodule foreach --recursive \"git clean -xdff -e .vscode\"
 
